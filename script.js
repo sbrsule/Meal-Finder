@@ -18,17 +18,19 @@ function searchMeal(e) {
 		fetch(`https://www.themealdb.com/api/json/v1/1/search.php?s=${term}`)
 			.then(res => res.json())
 			.then(data => {
-				console.log(data);
 				if (data.meals === null) {
+					mealsEl.innerHTML = resultHeading.innerHTML = '';
 					resultHeading.innerHTML = `<h2>No Results for '${term}'</h2>`;
 				}
 				else {
-					mealsEl.innerHTML = data.meals.map(meal => `<div class="meal">
-						<img src="${meal.strMealThumb}"/>
-						<div class="meal-info" data-mealID="${meal.idMeal}">
-							<h3>${meal.strMeal}</h3>					
-						</div>
-					</div>`).join('');
+					mealsEl.innerHTML = data.meals.map(meal => 
+						`<div class="meal">
+							<img src="${meal.strMealThumb}"/>
+							<div class="meal-info" data-mealID="${meal.idMeal}">
+								<h3>${meal.strMeal}</h3>					
+							</div>
+						</div>`)
+					.join('');
 					search.value = '';
 				}
 				if (data.meals.length === 1) {
@@ -69,8 +71,8 @@ function addMealToDOM(meal) {
 	};
 
 	single_mealEl.innerHTML = `
-		<div class="single-meal">
-			<h1>${meal.strMeal}</h1>
+		<div class="single-meal" id="single-meal">
+			<h1 id="single-meal">${meal.strMeal}</h1>
 			<img src="${meal.strMealThumb}" alt="${meal.strMeal}"/>
 			<div class="single-meal-info"> 
 				${meal.strCategory ? `<p>${meal.strCategory}</p>` : ''}
@@ -82,11 +84,14 @@ function addMealToDOM(meal) {
 				<ul>
 					${ingredients.map(ing => `<li>${ing}</li>`).join('')}
 				</ul>
+			</div>
 		</div>
 	`;
+	document.getElementById("single-meal").scrollIntoView();
 }
 
 // Event listeners
+
 submit.addEventListener('submit', searchMeal);
 
 mealsEl.addEventListener('click', e => {
@@ -110,7 +115,6 @@ mealsEl.addEventListener('click', e => {
 				return false;
 			}
 		});
-		console.log(mealInfo);
 	}
 
 	if (mealInfo) {

@@ -133,12 +133,23 @@ input:focus {
 	background: rgba(0,0,0,0.8);
 }
 
-@media(max-width: 800px) {
-		
+.single-meal {
+	margin: 30px auto;
+	width: 70%;
 }
-@media(max-width: 700px) {
-	
+
+.single-meal img {
+	width: 400px;
+	margin: 15px;
+	border: 4px var(--secondary-background) solid;
 }
+
+.main ul {
+	list-style-type: none;
+	margin: 0;
+	padding: 0;
+}
+
 @media(max-width: 500px) {
 	input {
 		width: 100%;
