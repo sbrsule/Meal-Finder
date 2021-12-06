@@ -73,6 +73,9 @@ function addMealToDOM(meal) {
 	single_mealEl.innerHTML = `
 		<div class="single-meal" id="single-meal">
 			<h1 id="single-meal">${meal.strMeal}</h1>
+			<button class="close-btn" id="close">
+				<i class="fas fa-times fa-lg" aria-hidden="true"></i>
+			</button>
 			<img src="${meal.strMealThumb}" alt="${meal.strMeal}"/>
 			<div class="single-meal-info"> 
 				${meal.strCategory ? `<p>${meal.strCategory}</p>` : ''}
@@ -88,6 +91,13 @@ function addMealToDOM(meal) {
 		</div>
 	`;
 	document.getElementById("single-meal").scrollIntoView();
+	const close = document.getElementById("close");
+	close.addEventListener('click', e => {
+		single_mealEl.innerHTML = '';
+		const selectedMeal = document.getElementById("selected");
+		selectedMeal.scrollIntoView();
+		selectedMea.removeAttribute('id');	
+	});
 }
 
 // Event listeners
@@ -118,6 +128,7 @@ mealsEl.addEventListener('click', e => {
 	}
 
 	if (mealInfo) {
+		e.target.setAttribute('id', 'selected');
 		const mealID = mealInfo.getAttribute('data-mealid');
 		getMealById(mealID);
 	}
