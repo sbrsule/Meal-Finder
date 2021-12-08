@@ -17,13 +17,37 @@ body {
 
 .container {
 	margin: auto;
-	margin-top: 30px;
+	margin-top: 20px;
 	max-width: 800px;
 	display: flex;
 	flex-direction: column;
 	align-items: center;
 	justify-content: center;
 	text-align: center;
+}
+
+.span-container {
+	margin-bottom: 20px;
+	height: 70px;	
+	line-height: 70px;
+	width: 225px;
+	border-radius: 30px;
+	align-items: center;
+	justify-content: center;
+	text-align: center;
+	background: #134E5E;  /* fallback for old browsers */
+	background: -webkit-linear-gradient(to right, #71B280, #134E5E);  /* Chrome 10-25, Safari 5.1-6 */
+	background: linear-gradient(to right, #71B280, #134E5E); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+}
+
+.span-container h1 {
+	font-size: 30px;
+	color: var(--primary-background);
+	display: inline-block;
+	vertical-align: middle;
+	line-height: normal;
+	padding: 0;
 }
 
 .flex {
@@ -136,6 +160,7 @@ input:focus {
 .single-meal {
 	margin: 30px auto;
 	width: 70%;
+	position: relative;
 }
 
 .single-meal img {
@@ -150,6 +175,76 @@ input:focus {
 	padding: 0;
 }
 
+.close-btn {
+	cursor: pointer;
+	border-radius: 4px;
+	position: absolute;
+	right: 0;
+	top: 0;
+}
+
+@media(min-width: 1440px) {
+	.meals {
+		grid-template-columns: repeat(5, 1fr);
+	}
+
+	.span-container {
+		width: 400px;
+		height: 90px;
+	}
+	
+	.span-container h1 {
+		font-size: 40px;	
+	}
+
+	.meal {
+		width: 230px;
+		height: 230px;
+
+	}
+
+}
+
+@media(min-width: 3840px) {
+	.meals {
+		grid-template-columns: repeat(6, 1fr);
+		grid-gap: 40px;
+	}
+
+	.span-container {
+		width: 700px;
+		height: 150px;
+	}
+	
+	.span-container h1 {
+		font-size: 65px;	
+	}
+
+	.meal {
+		width: 400px;
+		height: 400px;
+
+	}
+
+	.meal-info {
+		font-size: 30px;
+	}
+
+}
+
+
+
+@media(max-width: 800px) {
+	.meals {
+		grid-template-columns: repeat(3, 1fr);
+	}
+}
+
+@media (max-width: 650px) {
+	.meals {
+		grid-template-columns: repeat(2, 1fr);
+	}
+}
 @media(max-width: 500px) {
 	input {
 		width: 100%;
