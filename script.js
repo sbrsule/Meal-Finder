@@ -108,23 +108,7 @@ random.addEventListener('click', e => {
 	fetch(`https://www.themealdb.com/api/json/v1/1/random.php`)                                           	
         	.then(res => res.json())
         	.then(data => {
-        		mealsEl.innerHTML = data.meals.map(meal => 
-        			`<div class="meal">
-        				<img src="${meal.strMealThumb}"/>
-        				<div class="meal-info" data-mealID="${meal.idMeal}">
-        					<h3>${meal.strMeal}</h3>					
-        				</div>
-        			</div>`)
-        		.join('');
-			addMealToDOM(meal);
-        		search.value = '';
-        		if (data.meals.length === 1) {
-        			resultHeading.innerHTML = `<h2>1 result for '${term}':</h2>`;
-        			
-        		}
-        		else if (data.meals.length > 1) {
-        			resultHeading.innerHTML = `<h2>${data.meals.length} results for '${term}':</h2>`;
-        		}
+			getMealById(data.meals[0].idMeal);
         	});
 });
 

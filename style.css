@@ -159,7 +159,7 @@ input:focus {
 
 .single-meal {
 	margin: 30px auto;
-	width: 70%;
+	width: 80%;
 	position: relative;
 }
 
@@ -167,6 +167,10 @@ input:focus {
 	width: 400px;
 	margin: 15px;
 	border: 4px var(--secondary-background) solid;
+}
+
+.single-meal-info {
+	border: 4px solid white;
 }
 
 .main ul {
@@ -179,7 +183,7 @@ input:focus {
 	cursor: pointer;
 	border-radius: 4px;
 	position: absolute;
-	right: 0;
+	right: -30px;
 	top: 0;
 }
 
@@ -246,6 +250,9 @@ input:focus {
 	}
 }
 @media(max-width: 500px) {
+	.meals {
+		grid-template-columns: repeat(2, 1fr);
+	}
 	input {
 		width: 100%;
 	}
