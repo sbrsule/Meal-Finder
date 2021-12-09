@@ -183,7 +183,7 @@ input:focus {
 	top: 0;
 }
 
-@media(min-width: 1440px) {
+@media(min-width: 2560px) {
 	.meals {
 		grid-template-columns: repeat(5, 1fr);
 	}
